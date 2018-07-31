@@ -25,8 +25,10 @@ export class TodoService {
     this.nextId++;
   }
 
-  public getTodos(): Todo[] {
-    return this.todos;
+  public getTodos(searchText = ''): Todo[] {
+    console.log(searchText);
+    console.log(this.todos.filter(item => item.text.indexOf(searchText) !== -1));
+    return this.todos.filter(item => item.text.indexOf(searchText) !== -1);
   }
 
   public removeTodo(id: number): void {

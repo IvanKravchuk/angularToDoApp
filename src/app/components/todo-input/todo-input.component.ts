@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter} from '@angular/core';
 import { TodoService } from '../../services/todo.service';
+import { debounce } from 'lodash-es';
 
 @Component({
   selector: 'app-todo-input',
@@ -8,18 +9,27 @@ import { TodoService } from '../../services/todo.service';
 })
 export class TodoInputComponent implements OnInit {
 
+  public searchTodo: Function;
   private todoText: string;
+  // private searchText: string;
+  @Output() search = new EventEmitter();
 
   constructor( private todoService: TodoService) {
     this.todoText = '';
+    // this.searchText = '';
+    this.searchTodo =  debounce(this.forDeb.bind(this), 2000);
   }
 
   ngOnInit() {
   }
 
-  private addTodo(): void {
+  public addTodo(): void {
     this.todoService.addTodo(this.todoText);
     this.todoText = '';
+  }
+
+  private forDeb(): any {
+    return this.search.emit(this.todoText);
   }
 
 }
