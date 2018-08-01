@@ -14,9 +14,6 @@ export class AppComponent {
   }
 
   public search (search: any) {
-    // console.log(search);
-    // console.log('111', this.todoService.getTodos(search));
-    //  this.todoService.getTodos(search);
     this.searchProp = search;
   }
 

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Todo } from '../classes/todo';
+import { fromEvent } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +27,6 @@ export class TodoService {
   }
 
   public getTodos(searchText = ''): Todo[] {
-    console.log(searchText);
-    console.log(this.todos.filter(item => item.text.indexOf(searchText) !== -1));
     return this.todos.filter(item => item.text.indexOf(searchText) !== -1);
   }
 

@@ -1,5 +1,7 @@
 <div class="todo-input-wrapper">
-  <input type="text"  [(ngModel)]="todoText" value={{todoText}} (ngModelChange)="searchTodo()" />
+  <input type="text"  [(ngModel)]="todoText" value={{todoText}} #myInput/>
   <button class="btn btn-primary" (click)="addTodo()">Submit</button>
   <!-- <button class="btn btn-primary" (click)="searchTodo()">Search</button> -->
 </div>
+
+<!-- (ngModelChange)="searchTodo()" -->
