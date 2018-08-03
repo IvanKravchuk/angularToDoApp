@@ -12,8 +12,8 @@ export class HttpClientService {
 
   constructor(private http: HttpClient) { }
 
-  async getTodosFromFaker(): Promise<Todo[]> {
-    return this.http.get<Todo[]>(this._url).toPromise();
+  getTodosFromFaker(): Observable<Todo[]> {
+    return this.http.get<Todo[]>(this._url);
   }
 
 }

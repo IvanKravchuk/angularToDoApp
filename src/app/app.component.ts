@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
 
   constructor(private todoService: TodoService, private httpClient: HttpClientService) { }
 
-  async ngOnInit() {
-    this.todos = await this.httpClient.getTodosFromFaker();
+  ngOnInit(): void {
+    this.httpClient.getTodosFromFaker().subscribe(data => this.todos = data);
   }
 }
