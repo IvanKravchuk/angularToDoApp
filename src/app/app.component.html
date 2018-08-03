@@ -2,7 +2,7 @@
   <div class="todo-wrapper">
       <app-header></app-header>
       <app-todo-input (search) = search($event)></app-todo-input>
-      <div *ngFor="let todo of currentList">
+      <div *ngFor="let todo of todos">
           <app-todo-item [todo]="todo"></app-todo-item>
       </div>
   </div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Todo } from '../classes/todo';
-import { fromEvent } from 'rxjs';
+// import { Subject, Subscription, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,9 @@ export class TodoService {
 
   private todos: Todo[];
   private nextId: number;
+  public filterdTotos: Todo[];
+  // public search
+
 
   constructor() {
     this.todos = [
@@ -18,19 +21,21 @@ export class TodoService {
     ];
 
     this.nextId = 3;
+    this.filterdTotos = this.todos;
   }
 
-  public addTodo(text: string): void {
-    const todo = new Todo(this.nextId, text);
+  public addTodo(title: string): void {
+    const todo = new Todo(this.nextId, title);
     this.todos.push(todo);
     this.nextId++;
   }
 
   public getTodos(searchText = ''): Todo[] {
-    return this.todos.filter(item => item.text.indexOf(searchText) !== -1);
+    return this.todos.filter(item => item.title.indexOf(searchText) !== -1);
   }
 
   public removeTodo(id: number): void {
     this.todos = this.todos.filter((todo) => todo.id !== id);
   }
+
 }
